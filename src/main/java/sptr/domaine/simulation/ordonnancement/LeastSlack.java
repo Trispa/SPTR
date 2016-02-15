@@ -16,7 +16,7 @@ public class LeastSlack implements Ordonnancement{
 
     private List<Processus> ProcessusListe; 
 
-    public LeastSlack(){
+    LeastSlack(){
         
     }
     public LeastSlack(List<Processus> ProcessusListe) {

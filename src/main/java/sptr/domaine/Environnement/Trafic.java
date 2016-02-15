@@ -17,6 +17,17 @@ public class Trafic {
     private final int periodeDesDebuts;
     private final int delais;
 
+
+    public Trafic(int numero, Coordonnee cordonneIntersectionDepart, Coordonnee cordonneIntersectionArrivee, int vitesseVehicule, int periodeDesDebuts, int delais) {
+        this.numero = numero;
+        this.cordonneIntersectionDepart = cordonneIntersectionDepart;
+        this.cordonneIntersectionArrivee = cordonneIntersectionArrivee;
+        this.vitesseVehicule = vitesseVehicule;
+        this.periodeDesDebuts = periodeDesDebuts;
+        this.delais = delais;
+    }
+    
+    
     public int getNumero() {
         return numero;
     }
@@ -40,15 +51,4 @@ public class Trafic {
     public int getDelais() {
         return delais;
     }
-
-    public Trafic(int numero, Coordonnee cordonneIntersectionDepart, Coordonnee cordonneIntersectionArrivee, int vitesseVehicule, int periodeDesDebuts, int delais) {
-        this.numero = numero;
-        this.cordonneIntersectionDepart = cordonneIntersectionDepart;
-        this.cordonneIntersectionArrivee = cordonneIntersectionArrivee;
-        this.vitesseVehicule = vitesseVehicule;
-        this.periodeDesDebuts = periodeDesDebuts;
-        this.delais = delais;
-    }
-    
-    
 }

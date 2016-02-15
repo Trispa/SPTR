@@ -11,10 +11,10 @@ package sptr.domaine.Environnement;
  */
 public class Route {
     
-    private int num;
-    private Coordonnee coordonneeDebut;
-    private Coordonnee coordonneeFin;
-    private int vitesseMax;
+    private final int num;
+    private final Coordonnee coordonneeDebut;
+    private final Coordonnee coordonneeFin;
+    private final int vitesseMax;
 
     public Route(int num, Coordonnee positionDebut, Coordonnee positionFin, int vitesseMax) {
         this.num = num;

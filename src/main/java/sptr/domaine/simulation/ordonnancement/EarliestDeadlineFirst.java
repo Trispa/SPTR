@@ -20,9 +20,10 @@ public class EarliestDeadlineFirst implements Ordonnancement{
     
     }
     
-    public EarliestDeadlineFirst(List<Processus> ProcessusListe) {
-        this.ProcessusListe = ProcessusListe;
+    public EarliestDeadlineFirst(List<Processus> processusListe) {
+        this.ProcessusListe = processusListe;
     }
+
     
     
     @Override

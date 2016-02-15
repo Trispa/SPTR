@@ -3,40 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package sptr.domaine.simulation.ordonnancement;
+
+import java.util.List;
+import sptr.domaine.simulation.processus.Processus;
 
 /**
  *
  * @author Erco
  */
-
-public abstract class Ordonnancement  implements Iordonnancement{
+public interface Ordonnancement {
     
-    protected  TypeStrategie typeStrategie ;
+    public List<Processus> ProcessusPret();   
     
-    public Ordonnancement(TypeStrategie typeStrategie){
-        this.typeStrategie = typeStrategie;
-    }
+    public Boolean estPret(Processus P);
+ 
+    public Processus getNextProcessus();
     
-    @Override
-    public void doRoundRobin(){
-    }
     
-    @Override
-    public void doRateMonotonic(){
-    }
-    
-    @Override
-    public void doRateMonotonicHeritage(){
-    }
-    
-    @Override 
-    public void doEaliest_dedline_first(){
-    }
-    @Override
-    public void doLeastSlack(){
-    }
-
     
 }

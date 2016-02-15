@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package sptr.domaine.simulation.processeur;
-
-
+package sptr.domaine.simulation.ordonnancement;
 
 /**
  *
- * @author Erco
+ * @author trispa
  */
-public class Processeur {
+public abstract class OrdonnancementAbstractFactory {
     
-    
-    
-    
+    abstract Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie);
     
 }

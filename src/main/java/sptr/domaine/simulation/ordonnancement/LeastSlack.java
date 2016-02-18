@@ -12,35 +12,27 @@ import sptr.domaine.simulation.processus.Processus;
  *
  * @author trispa
  */
-public class LeastSlack implements Ordonnancement{
+public class LeastSlack extends  StrategieOrdonnancement{
 
-    private List<Processus> ProcessusListe; 
-
-    LeastSlack(){
-        
+    public LeastSlack(List<Processus> listePrcessus) {
+        super(listePrcessus);
     }
-    public LeastSlack(List<Processus> ProcessusListe) {
-        this.ProcessusListe = ProcessusListe;
-    }
-    
-    
 
     @Override
-    public List<Processus> ProcessusPret(){
-        
-        return null;
+    public List<Processus> ProcessusPret() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
+    public Boolean estPret(Processus P) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
+
+    @Override
+    protected Processus getNextProccess() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
     
 }

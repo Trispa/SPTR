@@ -5,6 +5,9 @@
  */
 package sptr.domaine.simulation.ordonnancement;
 
+import java.util.List;
+import sptr.domaine.simulation.processus.Processus;
+
 /**
  *
  * @author trispa
@@ -12,32 +15,26 @@ package sptr.domaine.simulation.ordonnancement;
 public class OrdonnancementFactory extends OrdonnancementAbstractFactory{
 
     @Override
-    Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie) {
+    Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie ,List<Processus> listePrcessus) {
         
         if(strategie == null){
             return null;
         }
-        if(strategie.equals(TypeStrategie.EARLIEST_DEDLINE_FIRST)){
-            return new EarliestDeadlineFirst();
+        else if(strategie.equals(TypeStrategie.EARLIEST_DEDLINE_FIRST)){
+            return new EarliestDeadlineFirst(listePrcessus);
         }else if (strategie.equals(TypeStrategie.LEAS_SLACK)){
-            return new LeastSlack();
+            return new LeastSlack(listePrcessus);
             
         }else if(strategie.equals(TypeStrategie.RATE_MONOTONIC)){
-            return new RateMonotonic();
+            return new RateMonotonic(listePrcessus);
         }else if(strategie.equals(TypeStrategie.RATE_MONOTONIC_HERITAGE)){
-            return new RateMonotonicHeritage();
+            return new RateMonotonicHeritage(listePrcessus);
         }
         else if(strategie.equals(TypeStrategie.ROUND_ROBIN)){
-            return new RoundRobin();
+            return new RoundRobin(listePrcessus);
         }
         
         return null;
     }
-    
-    Ordonnancement getOrdonnancement(TypeStrategie strategie){
-        return null;
-    }
-    
-    
     
 }

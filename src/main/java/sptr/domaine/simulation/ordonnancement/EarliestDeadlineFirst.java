@@ -12,36 +12,49 @@ import sptr.domaine.simulation.processus.Processus;
  *
  * @author trispa
  */
-public class EarliestDeadlineFirst implements Ordonnancement{
-    
-    private List<Processus> ProcessusListe; 
+public class EarliestDeadlineFirst extends StrategieOrdonnancement{
 
-    public EarliestDeadlineFirst(){
-    
-    }
-    
-    public EarliestDeadlineFirst(List<Processus> processusListe) {
-        this.ProcessusListe = processusListe;
+    public EarliestDeadlineFirst(List<Processus> listePrcessus) {
+        super(listePrcessus);
     }
 
-    
-    
     @Override
-    public List<Processus> ProcessusPret(){
+    protected Processus getNextProccess() {
         
-        return null;
+        Processus processusPrioritaire = null ;
+        int prochaineEcheanceProcessusPrioritaire = 0;
+        int prochaineEcheanceProcessusCourrant  = 0;
+  
+        for(Processus processusCourrant :  this.getListePrcessusPret())
+        {
+            if(processusPrioritaire == null){
+                processusPrioritaire = processusCourrant;
+            }
+            else 
+                prochaineEcheanceProcessusCourrant =   (processusCourrant.getContrainteFin() - (this.getUniteTemps() + processusCourrant.getContrainteFin())) % processusCourrant.getContrainteFin();
+                prochaineEcheanceProcessusPrioritaire =(processusPrioritaire.getContrainteFin() - (this.getUniteTemps() + processusPrioritaire.getContrainteFin())) %processusPrioritaire.getContrainteFin();
+                
+                if(prochaineEcheanceProcessusCourrant < prochaineEcheanceProcessusPrioritaire){
+                processusPrioritaire = processusCourrant;
+            }
+        }
+        
+        return null ;
     }
-    
     @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
+    public List<Processus> ProcessusPret() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Boolean estPret(Processus P) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
-    }
-   
+
+    
+    
+  
     
 }

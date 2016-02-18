@@ -18,7 +18,7 @@ public interface Ordonnancement {
     
     public Boolean estPret(Processus P);
  
-    public Processus getNextProcessus();
+    
     
     
     

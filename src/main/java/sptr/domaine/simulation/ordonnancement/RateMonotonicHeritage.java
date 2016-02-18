@@ -12,32 +12,28 @@ import sptr.domaine.simulation.processus.Processus;
  *
  * @author trispa
  */
-public class RateMonotonicHeritage implements Ordonnancement{
+public class RateMonotonicHeritage extends StrategieOrdonnancement{
 
-    private List<Processus> ProcessusListe; 
-
-    public RateMonotonicHeritage(){
-        
-    }
-    public RateMonotonicHeritage(List<Processus> ProcessusListe) {
-        this.ProcessusListe = ProcessusListe;
+    public RateMonotonicHeritage(List<Processus> listePrcessus) {
+        super(listePrcessus);
     }
 
     @Override
-    public List<Processus> ProcessusPret(){
-        
-        return null;
+    public List<Processus> ProcessusPret() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Boolean estPret(Processus P) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
+    protected Processus getNextProccess() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
-    }
+
+   
     
 }

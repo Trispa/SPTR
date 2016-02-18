@@ -5,12 +5,17 @@
  */
 package sptr.domaine.simulation.ordonnancement;
 
+import java.util.List;
+import sptr.domaine.simulation.processus.Processus;
+
+
 /**
  *
  * @author trispa
  */
 public abstract class OrdonnancementAbstractFactory {
     
-    abstract Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie);
+    
+    abstract Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie, List<Processus> listePrcessus);
     
 }

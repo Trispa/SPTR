@@ -6,6 +6,7 @@
 package sptr.domaine.simulation.ordonnancement;
 
 import java.util.List;
+import sptr.domaine.simulation.processus.EtatsProcessus;
 import sptr.domaine.simulation.processus.Processus;
 
 /**
@@ -15,7 +16,7 @@ import sptr.domaine.simulation.processus.Processus;
 public class RateMonotonic implements Ordonnancement{
 
     private List<Processus> ProcessusListe; 
-    
+    private List<Processus> ProcessusPret; 
     public RateMonotonic(){
         
     }
@@ -26,7 +27,17 @@ public class RateMonotonic implements Ordonnancement{
     @Override
     public List<Processus> ProcessusPret(){
         
-        return null;
+        for(int i = 0; i < ProcessusListe.size(); i++)
+            
+           {
+            if(ProcessusListe.get(i).getEtatPr0pcessus() == EtatsProcessus.PRET)
+            {
+                ProcessusPret.add(ProcessusListe.get(i));
+            }
+            
+           }   
+             
+    	return ProcessusPret;
     }
     
     @Override
@@ -37,7 +48,24 @@ public class RateMonotonic implements Ordonnancement{
     
     @Override 
     public Processus getNextProcessus(){
-        return null;
-    }
+        
+        Processus PlusPrioritaire = null;
+
+		for(Processus ProcessusCourant: ProcessusPret())
+		{
+			if(PlusPrioritaire == null)
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+			else if(ProcessusCourant.getPeriode() < PlusPrioritaire.getPeriode())
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+		}
+		
+		return PlusPrioritaire;  
+	}
+
+       
     
 }

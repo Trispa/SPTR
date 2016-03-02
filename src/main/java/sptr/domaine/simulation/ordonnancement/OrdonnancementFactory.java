@@ -15,7 +15,7 @@ import sptr.domaine.simulation.processus.Processus;
 public class OrdonnancementFactory extends OrdonnancementAbstractFactory{
 
     @Override
-    Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie ,List<Processus> listePrcessus) {
+    StrategieOrdonnancement getStrategieOrdonnancement(TypeStrategie strategie ,List<Processus> listePrcessus) {
         
         if(strategie == null){
             return null;

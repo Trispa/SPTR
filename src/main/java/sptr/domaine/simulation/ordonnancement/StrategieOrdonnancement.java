@@ -14,7 +14,7 @@ import sptr.domaine.simulation.processus.Processus;
  *
  * @author trispa
  */
-public abstract class StrategieOrdonnancement  implements Ordonnancement{
+public abstract class StrategieOrdonnancement {
     
     protected List<Processus> listePrcessus =  new ArrayList<>();
     protected List<Processus> listePrcessusPret =  new ArrayList<>();
@@ -47,9 +47,9 @@ public abstract class StrategieOrdonnancement  implements Ordonnancement{
     }
         
         //should be overrited  by sub classes
-    protected abstract Processus getNextProccess(); 
+    protected abstract Processus mettreAJourProchaineProcessus(); 
         
-    public Processus mettreAjourListeDesProcessus(){
+    public Processus getNextProcessus(){
             
         if(this.listePrcessus != null ){
                 
@@ -116,7 +116,7 @@ public abstract class StrategieOrdonnancement  implements Ordonnancement{
         }
         
         this.uniteTemps ++; // on incremente les unité de temps à chaque mise à jour
-        return getNextProccess();
+        return mettreAJourProchaineProcessus();
     }
 
     public List<Processus> getListePrcessus() {

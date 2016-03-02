@@ -19,7 +19,7 @@ public class EarliestDeadlineFirst extends StrategieOrdonnancement{
     }
 
     @Override
-    protected Processus getNextProccess() {
+    protected Processus mettreAJourProchaineProcessus() {
         
         Processus processusPrioritaire = null ;
         int prochaineEcheanceProcessusPrioritaire = 0;
@@ -39,17 +39,9 @@ public class EarliestDeadlineFirst extends StrategieOrdonnancement{
             }
         }
         
-        return null ;
+        return processusPrioritaire ;
     }
-    @Override
-    public List<Processus> ProcessusPret() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Boolean estPret(Processus P) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
 

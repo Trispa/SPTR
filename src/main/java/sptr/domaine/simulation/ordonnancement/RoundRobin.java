@@ -20,19 +20,11 @@ public class RoundRobin  extends  StrategieOrdonnancement{
     }
 
     @Override
-    public List<Processus> ProcessusPret() {
+    protected Processus mettreAJourProchaineProcessus() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Boolean estPret(Processus P) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected Processus getNextProccess() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
    
     

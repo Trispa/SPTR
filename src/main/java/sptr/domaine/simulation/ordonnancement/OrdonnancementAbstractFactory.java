@@ -16,6 +16,6 @@ import sptr.domaine.simulation.processus.Processus;
 public abstract class OrdonnancementAbstractFactory {
     
     
-    abstract Ordonnancement getStrategieOrdonnancement(TypeStrategie strategie, List<Processus> listePrcessus);
+    abstract StrategieOrdonnancement getStrategieOrdonnancement(TypeStrategie strategie, List<Processus> listePrcessus);
     
 }

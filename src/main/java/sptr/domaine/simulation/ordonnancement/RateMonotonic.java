@@ -14,13 +14,31 @@ import sptr.domaine.simulation.processus.Processus;
  */
 public class RateMonotonic extends  StrategieOrdonnancement{
 
+
     public RateMonotonic(List<Processus> listePrcessus) {
         super(listePrcessus);
     }
 
     @Override
     protected Processus mettreAJourProchaineProcessus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+          Processus PlusPrioritaire = null;
 
+		for(Processus ProcessusCourant: this.getListePrcessusPret())
+		{
+			if(PlusPrioritaire == null)
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+			else if(ProcessusCourant.getPeriode() < PlusPrioritaire.getPeriode())
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+		}
+		
+		return PlusPrioritaire;  
+	  }
+
+   
 }
+       
+

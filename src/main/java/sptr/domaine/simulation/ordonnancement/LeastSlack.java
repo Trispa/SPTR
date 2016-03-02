@@ -7,12 +7,12 @@ package sptr.domaine.simulation.ordonnancement;
 
 import java.util.List;
 import sptr.domaine.simulation.processus.Processus;
-
 /**
  *
  * @author trispa
  */
 public class LeastSlack extends  StrategieOrdonnancement{
+
 
     public LeastSlack(List<Processus> listePrcessus) {
         super(listePrcessus);
@@ -20,9 +20,36 @@ public class LeastSlack extends  StrategieOrdonnancement{
 
     @Override
     protected Processus mettreAJourProchaineProcessus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Processus PlusPrioritaire = null;
+       for (Processus ProcessusCourant : this.getListePrcessusPret())//ici cette liste contient les processus prets
+       {
+           
+           if(PlusPrioritaire ==null)
+           {
+               PlusPrioritaire = ProcessusCourant;
+           }
+           else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant))
+               PlusPrioritaire = ProcessusCourant;
+       } 
+       return PlusPrioritaire;
     }
+
+
 
     
     
+    public int  relachement(Processus p)
+    {
+       int s;
+       s = p.getContrainteFin() - p.getTempsCalcul() + 1 - this.getUniteTemps() ;
+       return s ;
+     
+    }
+    
+
+    
+  
+     
+        
+       
 }

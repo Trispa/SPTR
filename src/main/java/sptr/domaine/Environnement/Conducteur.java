@@ -26,6 +26,12 @@ public class Conducteur {
     public int getPeriodeDemandeConducteur() {
         return periodeDemandeConducteur;
     }
+
+    @Override
+    public String toString() {
+        return "Conducteur{" + "phaseDemandeConduteur=" + phaseDemandeConduteur + ", periodeDemandeConducteur=" + periodeDemandeConducteur + '}';
+    }
+    
     
     
 }

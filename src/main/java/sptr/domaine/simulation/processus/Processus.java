@@ -30,7 +30,7 @@ public class Processus {
     private final int periode;
     private final boolean estPeriodique = false;
 
-    public Processus(EtatsProcessus etat, String nom, ProcessusId processusId, int ContrainteDebut, int contrainteFin, int tempsCalcul, int priorite, EtatsProcessus etatPrpcessus, List<Ressource> resourceUtilises, TypeProcessus typeProcessus, int periode) {
+    public Processus(String nom, ProcessusId processusId, int ContrainteDebut, int contrainteFin, int tempsCalcul, int priorite, EtatsProcessus etatPrpcessus, List<Ressource> resourceUtilises, TypeProcessus typeProcessus, int periode) {
         
         this.nom = nom;
         this.processusId = processusId;

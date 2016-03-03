@@ -26,6 +26,11 @@ public class Bris {
     public int getPeriode() {
         return periode;
     }
+
+    @Override
+    public String toString() {
+        return "Bris{" + "phase=" + phase + ", periode=" + periode + '}';
+    }
     
     
 }

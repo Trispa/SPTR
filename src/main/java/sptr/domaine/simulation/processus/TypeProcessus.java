@@ -10,5 +10,5 @@ package sptr.domaine.simulation.processus;
  * @author trispa
  */
 public enum TypeProcessus {
-    
+    P1, P2
 }

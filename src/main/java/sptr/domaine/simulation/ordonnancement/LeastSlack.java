@@ -7,40 +7,49 @@ package sptr.domaine.simulation.ordonnancement;
 
 import java.util.List;
 import sptr.domaine.simulation.processus.Processus;
-
 /**
  *
  * @author trispa
  */
-public class LeastSlack implements Ordonnancement{
+public class LeastSlack extends  StrategieOrdonnancement{
 
-    private List<Processus> ProcessusListe; 
 
-    LeastSlack(){
-        
+    public LeastSlack(List<Processus> listePrcessus) {
+        super(listePrcessus);
     }
-    public LeastSlack(List<Processus> ProcessusListe) {
-        this.ProcessusListe = ProcessusListe;
-    }
-    
-    
 
     @Override
-    public List<Processus> ProcessusPret(){
+    protected Processus mettreAJourProchaineProcessus() {
+        Processus PlusPrioritaire = null;
+       for (Processus ProcessusCourant : this.getListePrcessusPret())//ici cette liste contient les processus prets
+       {
+           
+           if(PlusPrioritaire ==null)
+           {
+               PlusPrioritaire = ProcessusCourant;
+           }
+           else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant))
+               PlusPrioritaire = ProcessusCourant;
+       } 
+       return PlusPrioritaire;
+    }
+
+
+
+    
+    
+    public int  relachement(Processus p)
+    {
+       int s;
+       s = p.getContrainteFin() - p.getTempsCalcul() + 1 - this.getUniteTemps() ;
+       return s ;
+     
+    }
+    
+
+    
+  
+     
         
-        return null;
-    }
-    
-    @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
-    }
-    
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
-    }
-    
-    
+       
 }

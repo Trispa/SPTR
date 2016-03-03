@@ -30,6 +30,14 @@ public class Route {
     public int getVitesseMax() {
         return vitesseMax;
     }
+
+    @Override
+    public String toString() {
+        return "Route{" + "num=" + num + 
+                ", coordonneeDebut=" + coordonneeDebut + 
+                ", coordonneeFin=" + coordonneeFin + 
+                ", vitesseMax=" + vitesseMax + '}';
+    }
     
     
     

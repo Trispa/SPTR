@@ -26,6 +26,13 @@ public class Coordonnee {
     public int getCoordonneeY() {
         return CoordonneeY;
     }
+
+    @Override
+    public String toString() {
+        return "Coordonnee{" + "CoordonneeX=" + CoordonneeX 
+                + ", CoordonneeY=" + CoordonneeY + '}';
+    }
+    
     
     
     

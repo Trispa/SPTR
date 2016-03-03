@@ -15,14 +15,18 @@ public class Feu {
     private final int numero;
     private final Coordonnee coordonneeIntersection;
     private final PositionGeographique position;
-    
-    
+    private final int duree;
 
-    public Feu(int numero, Coordonnee coordonneeIntersection, PositionGeographique position) {
+    public Feu(int numero, Coordonnee coordonneeIntersection, PositionGeographique position, int duree) {
         this.numero = numero;
         this.coordonneeIntersection = coordonneeIntersection;
         this.position = position;
+        this.duree = duree;
     }
+    
+    
+
+    
     
     public int getNumero() {
         return numero;
@@ -35,5 +39,18 @@ public class Feu {
     public PositionGeographique getPosition() {
         return position;
     }
+
+    public int getDuree() {
+        return duree;
+    }
+    
+    
+
+    @Override
+    public String toString() {
+        return "Feu{" + "numero=" + numero + ", coordonneeIntersection=" + coordonneeIntersection + ", position=" + position + ", duree=" + duree + '}';
+    }
+    
+    
     
 }

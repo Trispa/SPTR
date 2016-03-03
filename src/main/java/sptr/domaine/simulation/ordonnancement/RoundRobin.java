@@ -8,37 +8,24 @@ package sptr.domaine.simulation.ordonnancement;
 import java.util.List;
 import sptr.domaine.simulation.processus.Processus;
 
+
 /**
  *
  * @author trispa
  */
-public class RoundRobin  implements Ordonnancement{
+public class RoundRobin  extends  StrategieOrdonnancement{
 
-    private List<Processus> ProcessusListe; 
+    public RoundRobin(List<Processus> listePrcessus) {
+        super(listePrcessus);
+    }
 
-    public RoundRobin(){
-    
-    }
-    
-    public RoundRobin(List<Processus> ProcessusListe){
-    
-        this.ProcessusListe  = ProcessusListe;
-    }
-     
     @Override
-    public List<Processus> ProcessusPret(){
-        
-        return null;
+    protected Processus mettreAJourProchaineProcessus() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     
-    @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
-    }
+
+   
     
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
-    }    
 }

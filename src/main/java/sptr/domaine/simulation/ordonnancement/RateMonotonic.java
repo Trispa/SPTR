@@ -12,32 +12,33 @@ import sptr.domaine.simulation.processus.Processus;
  *
  * @author trispa
  */
-public class RateMonotonic implements Ordonnancement{
+public class RateMonotonic extends  StrategieOrdonnancement{
 
-    private List<Processus> ProcessusListe; 
-    
-    public RateMonotonic(){
-        
+
+    public RateMonotonic(List<Processus> listePrcessus) {
+        super(listePrcessus);
     }
-    public RateMonotonic(List<Processus> ProcessusListe) {
-        this.ProcessusListe = ProcessusListe;
-    }
-    
+
     @Override
-    public List<Processus> ProcessusPret(){
-        
-        return null;
-    }
-    
-    @Override
-    public Boolean estPret(Processus P){
-            
-          return false;
-    }
-    
-    @Override 
-    public Processus getNextProcessus(){
-        return null;
-    }
-    
+    protected Processus mettreAJourProchaineProcessus() {
+          Processus PlusPrioritaire = null;
+
+		for(Processus ProcessusCourant: this.getListePrcessusPret())
+		{
+			if(PlusPrioritaire == null)
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+			else if(ProcessusCourant.getPeriode() < PlusPrioritaire.getPeriode())
+			{
+				PlusPrioritaire = ProcessusCourant;
+			}
+		}
+		
+		return PlusPrioritaire;  
+	  }
+
+   
 }
+       
+

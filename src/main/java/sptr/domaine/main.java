@@ -5,12 +5,17 @@
  */
 
 package sptr.domaine;
-
+import sptr.controleur.Simulateur;
 
 /**
  *
  * @author Erco
  */
 public class main {
+    public static void main(String[] args)
+    {
+        System.out.println("Hello");
+        Simulateur s = new Simulateur("sptr-scenario.xml");
+    }
     
 }

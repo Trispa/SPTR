@@ -22,31 +22,18 @@ public class EarliestDeadlineFirst extends StrategieOrdonnancement{
     protected Processus mettreAJourProchaineProcessus() {
         
         Processus processusPrioritaire = null ;
-        int prochaineEcheanceProcessusPrioritaire = 0;
-        int prochaineEcheanceProcessusCourrant  = 0;
-  
         for(Processus processusCourrant :  this.getListePrcessusPret())
         {
             if(processusPrioritaire == null){
                 processusPrioritaire = processusCourrant;
             }
-            else 
-                prochaineEcheanceProcessusCourrant =   (processusCourrant.getContrainteFin() - (this.getUniteTemps() + processusCourrant.getContrainteFin())) % processusCourrant.getContrainteFin();
-                prochaineEcheanceProcessusPrioritaire =(processusPrioritaire.getContrainteFin() - (this.getUniteTemps() + processusPrioritaire.getContrainteFin())) %processusPrioritaire.getContrainteFin();
-                
-                if(prochaineEcheanceProcessusCourrant < prochaineEcheanceProcessusPrioritaire){
+            else if((processusCourrant.getContrainteFin() - (this.getUniteTemps() + processusCourrant.getContrainteFin())) % processusCourrant.getContrainteFin() < (processusPrioritaire.getContrainteFin() - (this.getUniteTemps() + processusPrioritaire.getContrainteFin())) %processusPrioritaire.getContrainteFin())
                 processusPrioritaire = processusCourrant;
-            }
+            
         }
         
+         System.out.println("le temps de calcule est"+this.getUniteTemps());
         return processusPrioritaire ;
     }
-    
-
-    
-
-    
-    
-  
-    
+     
 }

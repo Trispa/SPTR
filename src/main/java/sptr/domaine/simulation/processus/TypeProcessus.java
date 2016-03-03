@@ -10,5 +10,31 @@ package sptr.domaine.simulation.processus;
  * @author trispa
  */
 public enum TypeProcessus {
-    P1, P2
+
+    
+    P01("Auto-verification"),
+    P02("Calcul du chemin"),
+    P03("Changement de vitesse"),
+    P04("Climat"),
+    P05("Contrôle des émission"),
+    P06("Envoi de bilan"),
+    P07("Evitement de collision"),
+    P08("Gestion des appels"),
+    P09("Messagerie"),
+    P010("Sécurité A"),
+    P011("Sécurité B"),
+    P012("Suivit du chemin"),
+    P013("Syteme electrique");
+    
+    
+    private  String TypeP;
+    
+    private TypeProcessus(String s){
+        TypeP = s;
+    }
+    
+    public String getNomTypeProcessus (){
+        return this.TypeP;
+    }
+    
 }

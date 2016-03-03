@@ -3,21 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sptr.domaine.simulation.ordonnancement;
 
+
+package sptr.domaine.simulation;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import sptr.domaine.simulation.processus.Processus;
 
 /**
  *
- * @author Erco
+ * @author HP
  */
-public interface Ordonnancement {
+public class Simulation {
     
-    public List<Processus> ProcessusPret();   
     
-    public Boolean estPret(Processus P);
- 
+    
+    
+    
     
     
     

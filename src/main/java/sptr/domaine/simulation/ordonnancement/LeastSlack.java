@@ -27,29 +27,30 @@ public class LeastSlack extends  StrategieOrdonnancement{
            if(PlusPrioritaire ==null)
            {
                PlusPrioritaire = ProcessusCourant;
+               PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
+                
            }
-           else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant))
+           else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant)){
                PlusPrioritaire = ProcessusCourant;
+              // PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
+               
+           }
+           
+           
+           
        } 
+       
+      
        return PlusPrioritaire;
     }
-
-
-
-    
-    
+   
     public int  relachement(Processus p)
     {
        int s;
        s = p.getContrainteFin() - p.getTempsCalcul() + 1 - this.getUniteTemps() ;
+       
        return s ;
      
     }
-    
-
-    
-  
-     
-        
-       
+         
 }

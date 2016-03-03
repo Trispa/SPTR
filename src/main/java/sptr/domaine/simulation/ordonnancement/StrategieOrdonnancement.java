@@ -146,6 +146,9 @@ public abstract class StrategieOrdonnancement {
     public int getUniteTemps() {
         return uniteTemps;
     }
+    public void setUniteTemps(int unitTemps){
+        this.uniteTemps = unitTemps;
+    }
     
     
             

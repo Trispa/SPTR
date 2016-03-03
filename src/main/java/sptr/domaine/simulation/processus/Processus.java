@@ -21,7 +21,7 @@ public class Processus {
     private final ProcessusId processusId;
     private final int  ContrainteDebut;
     private final int contrainteFin;
-    private final int tempsCalcul;
+    private  int tempsCalcul;
     private int priorite;
     private EtatsProcessus etatPr0pcessus;
     private final  boolean tempsMAxEcoule = false;
@@ -105,5 +105,10 @@ public class Processus {
     public void setResourceUtilises(List<Ressource> resourceUtilises) {
         this.resourceUtilises = resourceUtilises;
     }
+
+    public void setTempsCalcul(int tempsCalcul) {
+        this.tempsCalcul = tempsCalcul;
+    }
+    
     
 }

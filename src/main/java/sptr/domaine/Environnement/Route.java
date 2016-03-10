@@ -36,7 +36,7 @@ public class Route {
         return "Route{" + "num=" + num + 
                 ", coordonneeDebut=" + coordonneeDebut + 
                 ", coordonneeFin=" + coordonneeFin + 
-                ", vitesseMax=" + vitesseMax + '}';
+                ", vitesseMax=" + vitesseMax + "}\n";
     }
     
     

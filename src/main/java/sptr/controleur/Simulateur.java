@@ -26,6 +26,8 @@ public class Simulateur {
     private Parametres parametres = new Parametres();
     private Temperature temperature = new Temperature();
     private String filePath;
+
+  
     
     
     public Simulateur(){}
@@ -34,6 +36,14 @@ public class Simulateur {
     {
         this.filePath = filePath;
         readXML();
+    }
+    
+      public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     public Bris getBris() {
@@ -281,6 +291,13 @@ protected String getNodeAttr(String tagName, String attrName, NodeList nodes ) {
  
     return "";
 }
+
+    @Override
+    public String toString() {
+        return "Simulateur{" + "bris=" + bris + ", conducteur=" + conducteur + ", listFeu=" + listFeu + ", listRoute=" + listRoute + ", listTrafic=" + listTrafic + ", parametres=" + parametres + ", temperature=" + temperature + ", filePath=" + filePath + '}';
+    }
+
+
     
     
 }

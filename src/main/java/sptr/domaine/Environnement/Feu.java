@@ -48,7 +48,7 @@ public class Feu {
 
     @Override
     public String toString() {
-        return "Feu{" + "numero=" + numero + ", coordonneeIntersection=" + coordonneeIntersection + ", position=" + position + ", duree=" + duree + '}';
+        return "Feu{" + "numero=" + numero + ", coordonneeIntersection=" + coordonneeIntersection + ", position=" + position + ", duree=" + duree + "}\n";
     }
     
     

@@ -6,18 +6,34 @@
 
 package sptr.presentation;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import sptr.controleur.Simulateur;
+
 /**
  *
  * @author HP
  */
 public class InterfaceSPTR extends javax.swing.JFrame {
 
+    private static Simulateur simulateur = new Simulateur("sptr-scenario.xml");
+    private static Afficheur afficheur;
     /**
      * Creates new form InterfaceSPTR
      */
-    public InterfaceSPTR() {
+//    public InterfaceSPTR() {
+//        initComponents();
+//    }
+    
+    
+    public InterfaceSPTR(Simulateur s, Afficheur a)
+    {
         initComponents();
+        this.simulateur = s;
+        this.afficheur = a;
+        jTextArea1.setText(s.toString());
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,9 +159,6 @@ public class InterfaceSPTR extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +166,13 @@ public class InterfaceSPTR extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jLabel1)))
-                        .addGap(70, 70, 70)))
+                        .addGap(237, 237, 237))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(simulationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +195,19 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
     private void jMenuFichierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuFichierActionPerformed
         // TODO add your handling code here:
+               String filePath = "";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            filePath = selectedFile.getAbsolutePath();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        }
+        
+        simulateur.setFilePath(filePath);
+        simulateur.readXML();
+        jTextArea1.setText(filePath + "\n" + simulateur.toString());
     }//GEN-LAST:event_jMenuFichierActionPerformed
 
     private void jMenuParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametresActionPerformed
@@ -234,7 +264,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceSPTR().setVisible(true);
+                new InterfaceSPTR(simulateur, afficheur).setVisible(true);
             }
         });
     }

@@ -29,7 +29,7 @@ public class Bris {
 
     @Override
     public String toString() {
-        return "Bris{" + "phase=" + phase + ", periode=" + periode + '}';
+        return "Bris{" + "phase=" + phase + ", periode=" + periode + "}\n";
     }
     
     

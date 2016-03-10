@@ -54,7 +54,7 @@ public class Trafic {
 
     @Override
     public String toString() {
-        return "Trafic{" + "numero=" + numero + ", cordonneIntersectionDepart=" + cordonneIntersectionDepart + ", cordonneIntersectionArrivee=" + cordonneIntersectionArrivee + ", vitesseVehicule=" + vitesseVehicule + ", periodeDesDebuts=" + periodeDesDebuts + ", delais=" + delais + '}';
+        return "Trafic{" + "numero=" + numero + ", cordonneIntersectionDepart=" + cordonneIntersectionDepart + ", cordonneIntersectionArrivee=" + cordonneIntersectionArrivee + ", vitesseVehicule=" + vitesseVehicule + ", periodeDesDebuts=" + periodeDesDebuts + ", delais=" + delais + "}\n";
     }
     
     

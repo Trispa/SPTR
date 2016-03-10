@@ -30,7 +30,7 @@ public class Coordonnee {
     @Override
     public String toString() {
         return "Coordonnee{" + "CoordonneeX=" + CoordonneeX 
-                + ", CoordonneeY=" + CoordonneeY + '}';
+                + ", CoordonneeY=" + CoordonneeY + "}\n";
     }
     
     

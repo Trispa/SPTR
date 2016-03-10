@@ -29,7 +29,7 @@ public class Temperature {
 
     @Override
     public String toString() {
-        return "Temperature{" + "temperature=" + temperature + '}';
+        return "Temperature{" + "temperature=" + temperature + "}\n";
     }
     
     

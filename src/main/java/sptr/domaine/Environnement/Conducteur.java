@@ -29,7 +29,7 @@ public class Conducteur {
 
     @Override
     public String toString() {
-        return "Conducteur{" + "phaseDemandeConduteur=" + phaseDemandeConduteur + ", periodeDemandeConducteur=" + periodeDemandeConducteur + '}';
+        return "Conducteur{" + "phaseDemandeConduteur=" + phaseDemandeConduteur + ", periodeDemandeConducteur=" + periodeDemandeConducteur + "}\n";
     }
     
     

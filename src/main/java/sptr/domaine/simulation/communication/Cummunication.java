@@ -6,11 +6,32 @@
 
 package sptr.domaine.simulation.communication;
 
+import sptr.domaine.simulation.processus.Processus;
+
 
 /**
  *
  * @author Erco
  */
 public class Cummunication {
+   
+    // Des enum?
+    
+    private static int numero =0;
+    private String nom;
+    private String nature; //bloquant ou pas
+    private boolean estUtilise = false;
+    private Processus emeteur;
+    private Processus recepteur;
+    
+    public Cummunication(Processus emeteur, Processus recepteur) {
+        this.emeteur = emeteur;
+        this.recepteur = recepteur;
+        //this.numero++;
+    }
+    
+    public String determinerNature() {
+        return nature;
+    }
     
 }

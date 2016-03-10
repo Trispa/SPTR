@@ -4,17 +4,13 @@
  * and open the template in the editor.
  */
 
-package sptr.domaine;
-import sptr.controleur.Simulateur;
+package sptr.domaine.simulation.ressource;
+
 
 /**
  *
  * @author Erco
  */
-public class main {
-    public static void main(String[] args)
-    {
-        Simulateur s = new Simulateur("sptr-scenario.xml");
-    }
+public class Ressource {
     
 }

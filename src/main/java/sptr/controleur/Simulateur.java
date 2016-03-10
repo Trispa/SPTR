@@ -202,9 +202,7 @@ public class Simulateur {
 
             NodeList lConducteur = getNode("Conducteur", sptr.getChildNodes()).getChildNodes();
             this.conducteur = new Conducteur(Integer.parseInt(getNodeValue("Periode", lConducteur)), Integer.parseInt(getNodeValue("Phase", lConducteur)));
-            System.out.println(this.conducteur);
             
-
             
         }
         catch(Exception e)

@@ -7,7 +7,7 @@
 package sptr.domaine.simulation.processus;
         
 import java.util.List;
-import sptr.domaine.ressource.Ressource;
+import sptr.domaine.simulation.ressource.Ressource;
 
 
 /**

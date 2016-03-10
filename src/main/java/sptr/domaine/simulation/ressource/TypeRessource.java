@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package sptr.domaine.ressource;
+package sptr.domaine.simulation.ressource;
 
 /**
  *

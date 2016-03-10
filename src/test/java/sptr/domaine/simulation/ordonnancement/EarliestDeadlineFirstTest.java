@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import sptr.domaine.ressource.Ressource;
+import sptr.domaine.simulation.ressource.Ressource;
 import sptr.domaine.simulation.processus.EtatsProcessus;
 import sptr.domaine.simulation.processus.Processus;
 import sptr.domaine.simulation.processus.ProcessusId;

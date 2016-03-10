@@ -44,46 +44,64 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButtonSimulation = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
         simulationPanel = new javax.swing.JPanel();
-        jScrollPaneResultats = new javax.swing.JScrollPane();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabelResultat = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuFichier = new javax.swing.JMenuItem();
         jMenuParametres = new javax.swing.JMenuItem();
         jMenuQuitter = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItemGuideUser = new javax.swing.JMenuItem();
-        jMenuItemApropos = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToggleButtonSimulation.setText("Demarrer Simulation");
-        jToggleButtonSimulation.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButton2.setText("Demarrer Simulation");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonSimulationActionPerformed(evt);
+                jToggleButton2ActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 473, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout simulationPanelLayout = new javax.swing.GroupLayout(simulationPanel);
         simulationPanel.setLayout(simulationPanelLayout);
         simulationPanelLayout.setHorizontalGroup(
             simulationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, simulationPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         simulationPanelLayout.setVerticalGroup(
             simulationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGroup(simulationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jScrollPaneResultats.setViewportView(jTextArea1);
+        jScrollPane1.setViewportView(jTextArea1);
 
-        jLabelResultat.setText("Resultats");
+        jLabel1.setText("Resultats");
 
         jMenu1.setText("File");
 
@@ -115,21 +133,21 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
         jMenu4.setText("?");
 
-        jMenuItemGuideUser.setText("Guide Utilisation");
-        jMenuItemGuideUser.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setText("Guide Utilisation");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemGuideUserActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemGuideUser);
+        jMenu4.add(jMenuItem3);
 
-        jMenuItemApropos.setText("A propos...");
-        jMenuItemApropos.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem4.setText("A propos...");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAproposActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItemApropos);
+        jMenu4.add(jMenuItem4);
 
         Menu.add(jMenu4);
 
@@ -139,16 +157,14 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButtonSimulation)
+                            .addComponent(jToggleButton2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
-
                                 .addComponent(jLabel1)))
                         .addGap(237, 237, 237))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -157,17 +173,16 @@ public class InterfaceSPTR extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(simulationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
-                .addComponent(jToggleButtonSimulation, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jLabelResultat)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneResultats, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -197,7 +212,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
     private void jMenuParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametresActionPerformed
         Parametres o = new Parametres();
-        Menu.add(o);
+        jDesktopPane1.add(o);
         o.show();
     }//GEN-LAST:event_jMenuParametresActionPerformed
 
@@ -205,19 +220,19 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuQuitterActionPerformed
 
-    private void jMenuItemGuideUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuideUserActionPerformed
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemGuideUserActionPerformed
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItemAproposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAproposActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Apropos a = new Apropos();
-        Menu.add(a);
+        jDesktopPane1.add(a);
         a.show();
-    }//GEN-LAST:event_jMenuItemAproposActionPerformed
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jToggleButtonSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonSimulationActionPerformed
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButtonSimulationActionPerformed
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,17 +271,19 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JLabel jLabelResultat;
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuFichier;
-    private javax.swing.JMenuItem jMenuItemApropos;
-    private javax.swing.JMenuItem jMenuItemGuideUser;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuParametres;
     private javax.swing.JMenuItem jMenuQuitter;
-    private javax.swing.JScrollPane jScrollPaneResultats;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButtonSimulation;
+    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JPanel simulationPanel;
     // End of variables declaration//GEN-END:variables
 }
+

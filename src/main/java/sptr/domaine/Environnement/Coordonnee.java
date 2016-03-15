@@ -26,6 +26,24 @@ public class Coordonnee {
     public int getCoordonneeY() {
         return CoordonneeY;
     }
+    public double getDistanceOrigine()
+	{
+		return Math.sqrt(CoordonneeX*CoordonneeX + CoordonneeY*CoordonneeY);
+	}
+
+	
+	public boolean equals(Coordonnee o)
+	{
+		// TODO Auto-generated method stub
+		if (CoordonneeX == o.getCoordonneeX() && CoordonneeY == o.getCoordonneeY())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
     @Override
     public String toString() {

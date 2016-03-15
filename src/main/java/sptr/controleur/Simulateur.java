@@ -13,6 +13,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sptr.domaine.Environnement.*;
+import sptr.domaine.reseaux.GestionnairReseau;
+import sptr.presentation.CarteGraphique;
 /**
  * 
  * @author Erco
@@ -293,6 +295,14 @@ protected String getNodeAttr(String tagName, String attrName, NodeList nodes ) {
     @Override
     public String toString() {
         return "Simulateur{" + "bris=" + bris + ", conducteur=" + conducteur + ", listFeu=" + listFeu + ", listRoute=" + listRoute + ", listTrafic=" + listTrafic + ", parametres=" + parametres + ", temperature=" + temperature + ", filePath=" + filePath + '}';
+    }
+
+    public GestionnairReseau getGestionaireReseaux() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public CarteGraphique getGrille() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

@@ -16,7 +16,7 @@ import sptr.controleur.Simulateur;
  */
 public class InterfaceSPTR extends javax.swing.JFrame {
 
-    private static Simulateur simulateur = new Simulateur("sptr-scenario.xml");
+    private static Simulateur simulateur = new Simulateur();
     private static Afficheur afficheur;
     /**
      * Creates new form InterfaceSPTR

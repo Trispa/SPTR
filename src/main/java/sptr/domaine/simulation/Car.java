@@ -9,6 +9,20 @@ package sptr.domaine.simulation;
  *
  * @author Erco
  */
-public class Car {
+public interface  Car {
+    
+ 
+    
+    public void avance();
+    
+    public void arrete();
+    
+    public boolean estEnChemin();
+    
+    public void poursuisChemin(int duree);
+    
+    public void setNouvellePosition(int duree);
+    
+    
     
 }

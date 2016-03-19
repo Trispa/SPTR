@@ -31,12 +31,11 @@ public class LeastSlack extends  StrategieOrdonnancement{
                 
            }
            else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant)){
-               PlusPrioritaire = ProcessusCourant;
-              // PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
+              PlusPrioritaire = ProcessusCourant;
+              PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
                
            }
-           
-           
+            
            
        } 
        

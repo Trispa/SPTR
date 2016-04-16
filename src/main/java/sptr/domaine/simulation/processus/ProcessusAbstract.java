@@ -15,10 +15,10 @@ import sptr.domaine.simulation.ressource.Ressource;
  * @author trispa
  */
 public   abstract  class ProcessusAbstract {
-    protected final String nom;
-    protected final ProcessusId processusId;
-    protected final int  ContrainteDebut;
-    protected final int contrainteFin;
+    protected  String nom;
+    protected  ProcessusId processusId;
+    protected  int  ContrainteDebut;
+    protected  int contrainteFin;
     protected     int tempsCalcul = 0;
     protected     int tempsCalculRestant;
     protected     int priorite = -1;
@@ -29,7 +29,6 @@ public   abstract  class ProcessusAbstract {
     protected List<Ressource> resourceUtilises = new ArrayList<>();
     protected List<Communication>communicationAexecuter= new ArrayList<>();
     protected List<String> sequenceAexecuter = new ArrayList<>();
-    protected final TypeProcessus typeProcessus;
     protected  int periode;
 
 }

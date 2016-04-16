@@ -46,8 +46,8 @@ public class EarliestDeadlineFirstTest {
     public void initialise(){
         ressourceUtiliseP1.add(R1);
         ressourceUtiliseP2.add(R2);
-        p1 =  new Processus("P1", ProcessusId.NOT_SET, 1,3, 2, 1, EtatsProcessus.PRET, ressourceUtiliseP1, TypeProcessus.P01, 0) ;
-        p2 = new Processus("P2", ProcessusId.NOT_SET, 1,4, 1, 1, EtatsProcessus.PRET, ressourceUtiliseP2, TypeProcessus.P02, 0) ;
+        p1 =  new Processus(TypeProcessus.P01, 3) ;
+        p2 = new Processus(TypeProcessus.P02, 4) ;
       
         listProcessus.add(p1);
         listProcessus.add(p2);

@@ -32,7 +32,7 @@ public class LeastSlack extends  StrategieOrdonnancement{
            }
            else if (this.relachement(PlusPrioritaire) > this.relachement(ProcessusCourant)){
                PlusPrioritaire = ProcessusCourant;
-               //PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
+              // PlusPrioritaire.setTempsCalcul(PlusPrioritaire.getTempsCalcul()-1); 
                
            }
            
@@ -47,8 +47,7 @@ public class LeastSlack extends  StrategieOrdonnancement{
     public int  relachement(Processus p)
     {
        int s;
-       s =   1 + p.getContrainteFin() - this.getUniteTemps()%p.getContrainteFin() - p.getTempsCalculRestant(); 
-       //s = p.getContrainteFin() - p.getTempsCalcul() + 1 - this.getUniteTemps() ;
+       s = p.getContrainteFin() - p.getTempsCalcul() + 1 - this.getUniteTemps() ;
        
        return s ;
      

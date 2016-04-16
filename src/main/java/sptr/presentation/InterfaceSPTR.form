@@ -86,12 +86,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-                  <Component id="jScrollPaneResultats" alignment="0" min="-2" pref="251" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-=======
+
                   <Group type="102" attributes="0">
->>>>>>> origin/selectFile
+
                       <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToggleButtonSimulation" min="-2" max="-2" attributes="0"/>
@@ -100,24 +97,21 @@
                               <Component id="jLabelResultat" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-<<<<<<< HEAD
-=======
+
                       <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="464" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
->>>>>>> origin/selectFile
+
                   </Group>
               </Group>
               <EmptySpace pref="26" max="32767" attributes="0"/>
               <Component id="simulationPanel" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-              <EmptySpace max="-2" attributes="0"/>
-=======
+
               <EmptySpace max="32767" attributes="0"/>
->>>>>>> origin/selectFile
+
           </Group>
       </Group>
     </DimensionLayout>

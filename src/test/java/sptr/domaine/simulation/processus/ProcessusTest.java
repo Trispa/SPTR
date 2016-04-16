@@ -32,9 +32,8 @@ public class ProcessusTest {
     @Before
     public void  initialise(){
         pId = new ProcessusId();
-   
         ListRessource.add(R1);
-        p = new Processus("P1", pId, 1, 5, 2, 3, EtatsProcessus.SUSPENDU, ListRessource, TypeProcessus.P01, 6);
+        p = new Processus(TypeProcessus.P01, 6);
     }
     
     

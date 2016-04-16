@@ -31,6 +31,16 @@ public class Route {
         return vitesseMax;
     }
 
+    public Coordonnee getCoordonneeDebut() {
+        return coordonneeDebut;
+    }
+
+    public Coordonnee getCoordonneeFin() {
+        return coordonneeFin;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Route{" + "num=" + num + 

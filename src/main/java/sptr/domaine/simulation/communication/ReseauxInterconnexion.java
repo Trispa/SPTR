@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package sptr.domaine.reseaux;
+package sptr.domaine.simulation.communication;
 
 /**
  *
@@ -12,4 +12,18 @@ package sptr.domaine.reseaux;
  */
 public class ReseauxInterconnexion {
     
+
+	private int topology;
+	private int dimension;
+
+	public int getTopology()
+	{
+		return this.topology;
+	}
+
+	public int getDimension()
+	{
+		return this.dimension;
+	}
+
 }

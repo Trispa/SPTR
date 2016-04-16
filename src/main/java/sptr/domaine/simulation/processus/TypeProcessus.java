@@ -27,10 +27,10 @@ public enum TypeProcessus {
     P013("Syteme electrique");
     
     
-    private  String TypeP;
+    private final  String TypeP;
     
     private TypeProcessus(String s){
-        TypeP = s;
+        this.TypeP = s;
     }
     
     public String getNomTypeProcessus (){

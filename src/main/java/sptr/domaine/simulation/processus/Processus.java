@@ -6,7 +6,9 @@
 
 package sptr.domaine.simulation.processus;
         
+import java.util.ArrayList;
 import java.util.List;
+import sptr.domaine.simulation.communication.Communication;
 import sptr.domaine.simulation.ressource.Ressource;
 
 
@@ -16,32 +18,240 @@ import sptr.domaine.simulation.ressource.Ressource;
  */
 public class Processus {
     
-   
+    
     private final String nom;
     private final ProcessusId processusId;
     private final int  ContrainteDebut;
     private final int contrainteFin;
-    private  int tempsCalcul;
-    private int priorite;
+    private     int tempsCalcul = 0;
+    private     int tempsCalculRestant;
+    private     int priorite = -1;
+    private boolean estSporadique = false;
+    private TypeProcessus type;
     private EtatsProcessus etatPr0pcessus;
     private final  boolean tempsMAxEcoule = false;
-    private List<Ressource> resourceUtilises;
+    private List<Ressource> resourceUtilises = new ArrayList<>();
+    private List<Communication>communicationAexecuter= new ArrayList<>();
+    private List<String> sequenceAexecuter = new ArrayList<>();
     private final TypeProcessus typeProcessus;
-    private final int periode;
-    private final boolean estPeriodique = false;
+    private  int periode;
 
-    public Processus(String nom, ProcessusId processusId, int ContrainteDebut, int contrainteFin, int tempsCalcul, int priorite, EtatsProcessus etatPrpcessus, List<Ressource> resourceUtilises, TypeProcessus typeProcessus, int periode) {
-        
-        this.nom = nom;
-        this.processusId = processusId;
-        this.ContrainteDebut = ContrainteDebut;
-        this.contrainteFin = contrainteFin;
-        this.tempsCalcul = tempsCalcul;
-        this.priorite = priorite;
-        this.etatPr0pcessus = etatPrpcessus;
-        this.resourceUtilises = resourceUtilises;
-        this.typeProcessus = typeProcessus;
+    public Processus(TypeProcessus type, int periode) {
         this.periode = periode;
+        this.type = type;
+        
+        if(type == TypeProcessus.P01){
+           this.processusId = new ProcessusId(new Long(1));
+           this.nom = type.getNomTypeProcessus();
+           this.periode = periode;
+           this.estSporadique =  false;
+           this.etatPr0pcessus = EtatsProcessus.PRET;
+           this.tempsCalcul = 4;
+           this.tempsCalculRestant = this.tempsCalcul;
+           this.contrainteFin = periode;
+           this.sequenceAexecuter.add("R05");
+           this.sequenceAexecuter.add("E");
+           this.sequenceAexecuter.add("C01");
+           this.sequenceAexecuter.add("R08");
+           this.sequenceAexecuter.add("E");	
+        }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(2));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 6;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R02");
+            this.sequenceAexecuter.add("R07");
+            this.sequenceAexecuter.add("R05");
+            for(int i = 0; i < this.tempsCalcul-3; i++)
+			{
+				this.sequenceAexecuter.add("E"); // E*
+			}
+            this.sequenceAexecuter.add("C02");
+            this.sequenceAexecuter.add("R03");
+         }
+        else if(type == TypeProcessus.P03){
+            this.processusId = new ProcessusId(new Long(3));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  true;
+            this.etatPr0pcessus = EtatsProcessus.SUSPENDU;
+            this.sequenceAexecuter.add("R03");
+            this.sequenceAexecuter.add("C06");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("C09");
+            for(int  i = 0; i < this.tempsCalcul -1 ; i++){
+            	this.sequenceAexecuter.add("R10");
+            	
+            }
+            this.sequenceAexecuter.add("C04");	
+         }
+        else if(type == TypeProcessus.P04){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  true;
+            this.etatPr0pcessus = EtatsProcessus.SUSPENDU;
+            this.tempsCalcul = 4;
+            for(int  i = 0; i < this.tempsCalcul -1 ; i++){
+            	this.sequenceAexecuter.add("E");
+            	
+            }
+            this.contrainteFin = 30;
+         }
+        else if(type == TypeProcessus.P05){
+            this.processusId = new ProcessusId(new Long(5));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  true;
+            this.etatPr0pcessus = EtatsProcessus.SUSPENDU;
+            this.tempsCalcul = 5;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("C04");
+            this.sequenceAexecuter.add("R06");
+            this.sequenceAexecuter.add("C05");;	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(5));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  true;
+            this.etatPr0pcessus = EtatsProcessus.SUSPENDU;
+            this.tempsCalcul = 5;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+        else if(type == TypeProcessus.P02){
+            this.processusId = new ProcessusId(new Long(1));
+            this.nom = type.getNomTypeProcessus();
+            this.periode = periode;
+            this.estSporadique =  false;
+            this.etatPr0pcessus = EtatsProcessus.PRET;
+            this.tempsCalcul = 4;
+            this.tempsCalculRestant = this.tempsCalcul;
+            this.contrainteFin = periode;
+            this.sequenceAexecuter.add("R05");
+            this.sequenceAexecuter.add("E");
+            this.sequenceAexecuter.add("C01");
+            this.sequenceAexecuter.add("R08");
+            this.sequenceAexecuter.add("E");	
+         }
+                
     }
 
    

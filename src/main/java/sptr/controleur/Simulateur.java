@@ -8,11 +8,15 @@ package sptr.controleur;
 import java.io.IOException;
 import java.util.ArrayList;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import static java.lang.Integer.max;
+import static java.lang.Integer.min;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sptr.domaine.Environnement.*;
+import sptr.domaine.reseaux.GestionnairReseau;
+import sptr.presentation.CarteGraphique;
 /**
  * 
  * @author Erco
@@ -109,6 +113,50 @@ public class Simulateur {
 
     public void setParametre(Parametres parametre) {
         this.parametres = parametre;
+    }
+    
+    public ArrayList<ArrayList<String>> getImageMap()
+    {
+        ArrayList<ArrayList<String>> listRouteImage = new ArrayList<ArrayList<String>>();
+        
+        for(int i = 0; i < 32; i++)
+        {
+            listRouteImage.add(new ArrayList<String>());
+            for(int j = 0; j < 32; j++)
+                listRouteImage.get(i).add("empty.png");
+        }
+        
+        String imageName;
+        for(Route r : listRoute)
+        {
+            int xDebut = r.getCoordonneeDebut().getCoordonneeX();
+            int yDebut = r.getCoordonneeDebut().getCoordonneeY();
+            int xFin = r.getCoordonneeFin().getCoordonneeX();
+            int yFin = r.getCoordonneeFin().getCoordonneeY();
+            if(xDebut == xFin)
+            {
+                imageName = "routeVerticale.png";
+                int yMin = min(yDebut, yFin);
+                int yMax = max(yDebut, yFin);
+                while(yMin != yMax + 1)
+                {
+                    listRouteImage.get(xDebut).set(yMin, imageName);
+                    yMin += 1;
+                }
+            }
+            else if(yDebut == yFin)
+            {
+                imageName = "routeHorizontale.png";
+                int xMin = min(xDebut, xFin);
+                int xMax = max(xDebut, xFin);
+                while(xMin != xMax + 1)
+                {
+                    listRouteImage.get(xDebut).set(xMin, imageName);
+                    xMin += 1;
+                }
+            }
+        }
+        return listRouteImage;
     }
  
     
@@ -293,6 +341,14 @@ protected String getNodeAttr(String tagName, String attrName, NodeList nodes ) {
     @Override
     public String toString() {
         return "Simulateur{" + "bris=" + bris + ", conducteur=" + conducteur + ", listFeu=" + listFeu + ", listRoute=" + listRoute + ", listTrafic=" + listTrafic + ", parametres=" + parametres + ", temperature=" + temperature + ", filePath=" + filePath + '}';
+    }
+
+    public GestionnairReseau getGestionaireReseaux() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public CarteGraphique getGrille() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

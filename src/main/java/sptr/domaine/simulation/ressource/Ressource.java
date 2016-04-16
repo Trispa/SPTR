@@ -7,10 +7,23 @@
 package sptr.domaine.simulation.ressource;
 
 
+
 /**
  *
  * @author Erco
  */
 public class Ressource {
+    
+    
+private int numero;
+private String nom;
+
+public int getNumero(){
+    return this.numero;
+}
+
+public String getName(){
+    return this.nom;
+}
     
 }

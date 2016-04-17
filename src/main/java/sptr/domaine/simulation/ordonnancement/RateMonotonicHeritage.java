@@ -13,9 +13,19 @@ import sptr.domaine.simulation.processus.Processus;
  * @author trispa
  */
 public class RateMonotonicHeritage extends StrategieOrdonnancement{
-
+    
+    
+    protected List<Processus> processusPret = this.getListePrcessusPret();
+    protected List<Processus> processusblocke = this.getListePrcessusBlocke();
+    
+    
+    
     public RateMonotonicHeritage(List<Processus> listePrcessus) {
         super(listePrcessus);
+    }
+    
+    protected int getPriority(Processus processus){
+        return 0;
     }
 
     @Override

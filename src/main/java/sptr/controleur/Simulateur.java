@@ -8,11 +8,18 @@ package sptr.controleur;
 import java.io.IOException;
 import java.util.ArrayList;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import static java.lang.Integer.max;
+import static java.lang.Integer.min;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import sptr.domaine.Environnement.*;
+import sptr.domaine.reseaux.GestionnairReseau;
+import sptr.presentation.CarteGraphique;
 /**
  * 
  * @author Erco
@@ -102,13 +109,101 @@ public class Simulateur {
     public void setListTrafic(ArrayList<Trafic> listTrafic) {
         this.listTrafic = listTrafic;
     }
-
-    public Parametres getParametre() {
-        return parametres;
-    }
-
-    public void setParametre(Parametres parametre) {
-        this.parametres = parametre;
+    
+    public ArrayList<ArrayList<String>> getImageMap()
+    {
+        ArrayList<ArrayList<String>> listRouteImage = new ArrayList<ArrayList<String>>();
+        
+        for(int i = 0; i < 32; i++)
+        {
+            listRouteImage.add(new ArrayList<String>());
+            for(int j = 0; j < 32; j++)
+                listRouteImage.get(i).add("empty.png");
+        }
+        
+        String imageName;
+        for(Route r : listRoute)
+        {
+            int xDebut = r.getCoordonneeDebut().getCoordonneeX();
+            int yDebut = r.getCoordonneeDebut().getCoordonneeY();
+            int xFin = r.getCoordonneeFin().getCoordonneeX();
+            int yFin = r.getCoordonneeFin().getCoordonneeY();
+            if(xDebut == xFin)
+            {
+                imageName = "routeVerticale.png";
+                int yMin = min(yDebut, yFin);
+                int yMax = max(yDebut, yFin);
+                while(yMin != yMax + 1)
+                {
+                    listRouteImage.get(yMin).set(xDebut, imageName);
+                    yMin += 1;
+                }
+            }
+            else if(yDebut == yFin)
+            {
+                imageName = "routeHorizontale.png";
+                int xMin = min(xDebut, xFin);
+                int xMax = max(xDebut, xFin);
+                while(xMin != xMax + 1)
+                {
+                    listRouteImage.get(yDebut).set(xMin, imageName);
+                    xMin += 1;
+                }
+            }
+        }
+        
+        //Liste des feux - intersection
+        HashMap hmFeu = new HashMap();
+        for(Feu f : listFeu)
+        {
+            Iterator it = hmFeu.entrySet().iterator();
+            boolean findSameCoordonee = false;
+            while(it.hasNext())
+            {
+                Map.Entry pair = (Map.Entry)it.next();
+                Coordonnee c = (Coordonnee) pair.getKey();
+                if(c.equals(f.getCoordonneeIntersection()))
+                {
+                    System.out.println(c);
+                    System.out.println(f.getCoordonneeIntersection());
+                    String currentFeu = (String) pair.getValue();
+                    currentFeu += Character.toString(f.getPosition().toString().charAt(0));
+                    hmFeu.remove(pair.getKey());
+                    hmFeu.put(f.getCoordonneeIntersection(), currentFeu);
+                    System.out.println(currentFeu);
+                    findSameCoordonee = true;
+                    break;
+                }
+            }
+            if(!findSameCoordonee)
+                hmFeu.put(f.getCoordonneeIntersection(), Character.toString(f.getPosition().toString().charAt(0)));
+                
+        }
+        Iterator it = hmFeu.entrySet().iterator();
+        while(it.hasNext())
+        {
+            String imageNameIntersection;
+            Map.Entry pair = (Map.Entry)it.next();
+            imageNameIntersection = "routeIntersection";
+            String currentPosisitonFeu = pair.getValue().toString();
+            Coordonnee c = (Coordonnee) pair.getKey();
+            if(currentPosisitonFeu.indexOf('N') >= 0)
+                imageNameIntersection += "N";
+            if(currentPosisitonFeu.indexOf('S') >= 0)
+                imageNameIntersection += "S";
+            if(currentPosisitonFeu.indexOf('E') >= 0)
+                imageNameIntersection += "E";
+            if(currentPosisitonFeu.indexOf('W') >= 0)
+                imageNameIntersection += "W";
+            imageNameIntersection += ".png";
+            
+            listRouteImage.get(c.getCoordonneeY()).set(c.getCoordonneeX(), imageNameIntersection);
+            System.out.println(imageNameIntersection);
+            System.out.println(c.toString());
+            
+        }
+        
+        return listRouteImage;
     }
  
     
@@ -179,7 +274,7 @@ public class Simulateur {
                         pg = PositionGeographique.NORD;
                         break;
                     case "O":
-                        pg = PositionGeographique.OUEST;
+                        pg = PositionGeographique.WEST;
                         break;
                     case "S":
                         pg = PositionGeographique.SUD;
@@ -293,6 +388,14 @@ protected String getNodeAttr(String tagName, String attrName, NodeList nodes ) {
     @Override
     public String toString() {
         return "Simulateur{" + "bris=" + bris + ", conducteur=" + conducteur + ", listFeu=" + listFeu + ", listRoute=" + listRoute + ", listTrafic=" + listTrafic + ", parametres=" + parametres + ", temperature=" + temperature + ", filePath=" + filePath + '}';
+    }
+
+    public GestionnairReseau getGestionaireReseaux() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public CarteGraphique getGrille() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

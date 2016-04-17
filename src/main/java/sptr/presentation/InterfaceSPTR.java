@@ -7,7 +7,10 @@
 package sptr.presentation;
 
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import sptr.controleur.Simulateur;
 
 /**
@@ -16,7 +19,7 @@ import sptr.controleur.Simulateur;
  */
 public class InterfaceSPTR extends javax.swing.JFrame {
 
-    private static Simulateur simulateur = new Simulateur("sptr-scenario.xml");
+    private static Simulateur simulateur = new Simulateur();
     private static Afficheur afficheur;
     /**
      * Creates new form InterfaceSPTR
@@ -30,8 +33,35 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     {
         initComponents();
         this.simulateur = s;
+        this.simulateur = new Simulateur("sptr-scenario.xml");
         this.afficheur = a;
-        jTextArea1.setText(s.toString());
+        initMapWithXMLFile();
+        showParameter.setText(this.simulateur.getParametres().toString());
+        
+    }
+    
+    private void initEmptyMap()
+    {
+        for(int i = 0; i < 1024; i++)
+        {
+            JLabel tmpLabel = new JLabel();
+            tmpLabel.setIcon(new javax.swing.ImageIcon("/home/bhacaz/Dropbox/Ulaval/H-16/SPTR/SPTR/src/main/java/sptr/res/empty.png")); // NOI18N
+            imageGrid.add(tmpLabel);
+        }
+    }
+    
+    private void initMapWithXMLFile()
+    {
+        for(ArrayList<String> als : this.simulateur.getImageMap())
+        {
+            for(String imageName : als)
+            {
+                JLabel tmpLabel = new JLabel();
+                tmpLabel.setPreferredSize(new java.awt.Dimension(64, 64));
+                tmpLabel.setIcon(new javax.swing.ImageIcon(this.getClass().getResource("/" + imageName))); // NOI18N
+                imageGrid.add(tmpLabel);
+            }
+        }
     }
     
 
@@ -44,64 +74,54 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton2 = new javax.swing.JToggleButton();
-        simulationPanel = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jLabelResultat = new javax.swing.JLabel();
+        demarerSimulationButton = new javax.swing.JButton();
+        chooseXMLFileButton = new javax.swing.JButton();
+        imageGrid = new javax.swing.JPanel();
+        carteRoutiereLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        showParameter = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuFichier = new javax.swing.JMenuItem();
         jMenuParametres = new javax.swing.JMenuItem();
         jMenuQuitter = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jToggleButton2.setText("Demarrer Simulation");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jLabelResultat.setText("Resultats");
+        getContentPane().add(jLabelResultat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+
+        demarerSimulationButton.setText("Demarer simulation");
+        demarerSimulationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                demarerSimulationButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(demarerSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 170, -1));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        chooseXMLFileButton.setText("Fichier XML");
+        chooseXMLFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseXMLFileButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(chooseXMLFileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 190, -1));
 
-        javax.swing.GroupLayout simulationPanelLayout = new javax.swing.GroupLayout(simulationPanel);
-        simulationPanel.setLayout(simulationPanelLayout);
-        simulationPanelLayout.setHorizontalGroup(
-            simulationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, simulationPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        simulationPanelLayout.setVerticalGroup(
-            simulationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(simulationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
-        );
+        imageGrid.setPreferredSize(new java.awt.Dimension(200, 200));
+        imageGrid.setLayout(new java.awt.GridLayout(32, 32));
+        getContentPane().add(imageGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 830, 780));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        carteRoutiereLabel.setText("Carte routiere");
+        getContentPane().add(carteRoutiereLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jLabel1.setText("Resultats");
+        showParameter.setText("jLabel1");
+        showParameter.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jScrollPane1.setViewportView(showParameter);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 230, 290));
 
         jMenu1.setText("File");
 
@@ -132,63 +152,9 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         Menu.add(jMenu1);
 
         jMenu4.setText("?");
-
-        jMenuItem3.setText("Guide Utilisation");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem3);
-
-        jMenuItem4.setText("A propos...");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem4);
-
         Menu.add(jMenu4);
 
         setJMenuBar(Menu);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel1)))
-                        .addGap(237, 237, 237))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(simulationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(82, 82, 82)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(simulationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,13 +173,12 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         
         simulateur.setFilePath(filePath);
         simulateur.readXML();
-        jTextArea1.setText(filePath + "\n" + simulateur.toString());
     }//GEN-LAST:event_jMenuFichierActionPerformed
 
     private void jMenuParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametresActionPerformed
-        Parametres o = new Parametres();
-        jDesktopPane1.add(o);
-        o.show();
+        JFrame o = new ParametresWindows(simulateur.getParametres());
+//        jDesktopPane1.add(o);
+        o.setVisible(true);
     }//GEN-LAST:event_jMenuParametresActionPerformed
 
     private void jMenuQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuQuitterActionPerformed
@@ -226,13 +191,34 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Apropos a = new Apropos();
-        jDesktopPane1.add(a);
+//        jDesktopPane1.add(a);
         a.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void chooseXMLFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseXMLFileButtonActionPerformed
+        // TODO add your handling code here:
+               String filePath = "";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            filePath = selectedFile.getAbsolutePath();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        }
+        
+        simulateur.setFilePath(filePath);
+        simulateur.readXML();
+        initMapWithXMLFile();
+    }//GEN-LAST:event_chooseXMLFileButtonActionPerformed
+
+    private void demarerSimulationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_demarerSimulationButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_demarerSimulationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,19 +257,18 @@ public class InterfaceSPTR extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel carteRoutiereLabel;
+    private javax.swing.JButton chooseXMLFileButton;
+    private javax.swing.JButton demarerSimulationButton;
+    private javax.swing.JPanel imageGrid;
+    private javax.swing.JLabel jLabelResultat;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuFichier;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuParametres;
     private javax.swing.JMenuItem jMenuQuitter;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JPanel simulationPanel;
+    private javax.swing.JLabel showParameter;
     // End of variables declaration//GEN-END:variables
 }
 

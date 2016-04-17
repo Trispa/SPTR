@@ -21,16 +21,16 @@ public enum TypeProcessus {
     P07("Evitement de collision"),
     P08("Gestion des appels"),
     P09("Messagerie"),
-    P010("Sécurité A"),
-    P011("Sécurité B"),
-    P012("Suivit du chemin"),
-    P013("Syteme electrique");
+    P10("Sécurité A"),
+    P11("Sécurité B"),
+    P12("Suivit du chemin"),
+    P13("Syteme electrique");
     
     
-    private  String TypeP;
+    private final  String TypeP;
     
     private TypeProcessus(String s){
-        TypeP = s;
+        this.TypeP = s;
     }
     
     public String getNomTypeProcessus (){

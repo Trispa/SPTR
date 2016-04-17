@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import com.sun.org.apache.xerces.internal.parsers.DOMParser;
 import static java.lang.Integer.max;
 import static java.lang.Integer.min;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -106,14 +109,6 @@ public class Simulateur {
     public void setListTrafic(ArrayList<Trafic> listTrafic) {
         this.listTrafic = listTrafic;
     }
-
-    public Parametres getParametre() {
-        return parametres;
-    }
-
-    public void setParametre(Parametres parametre) {
-        this.parametres = parametre;
-    }
     
     public ArrayList<ArrayList<String>> getImageMap()
     {
@@ -140,7 +135,7 @@ public class Simulateur {
                 int yMax = max(yDebut, yFin);
                 while(yMin != yMax + 1)
                 {
-                    listRouteImage.get(xDebut).set(yMin, imageName);
+                    listRouteImage.get(yMin).set(xDebut, imageName);
                     yMin += 1;
                 }
             }
@@ -151,11 +146,63 @@ public class Simulateur {
                 int xMax = max(xDebut, xFin);
                 while(xMin != xMax + 1)
                 {
-                    listRouteImage.get(xDebut).set(xMin, imageName);
+                    listRouteImage.get(yDebut).set(xMin, imageName);
                     xMin += 1;
                 }
             }
         }
+        
+        //Liste des feux - intersection
+        HashMap hmFeu = new HashMap();
+        for(Feu f : listFeu)
+        {
+            Iterator it = hmFeu.entrySet().iterator();
+            boolean findSameCoordonee = false;
+            while(it.hasNext())
+            {
+                Map.Entry pair = (Map.Entry)it.next();
+                Coordonnee c = (Coordonnee) pair.getKey();
+                if(c.equals(f.getCoordonneeIntersection()))
+                {
+                    System.out.println(c);
+                    System.out.println(f.getCoordonneeIntersection());
+                    String currentFeu = (String) pair.getValue();
+                    currentFeu += Character.toString(f.getPosition().toString().charAt(0));
+                    hmFeu.remove(pair.getKey());
+                    hmFeu.put(f.getCoordonneeIntersection(), currentFeu);
+                    System.out.println(currentFeu);
+                    findSameCoordonee = true;
+                    break;
+                }
+            }
+            if(!findSameCoordonee)
+                hmFeu.put(f.getCoordonneeIntersection(), Character.toString(f.getPosition().toString().charAt(0)));
+                
+        }
+        Iterator it = hmFeu.entrySet().iterator();
+        while(it.hasNext())
+        {
+            String imageNameIntersection;
+            Map.Entry pair = (Map.Entry)it.next();
+            imageNameIntersection = "routeIntersection";
+            String currentPosisitonFeu = pair.getValue().toString();
+            Coordonnee c = (Coordonnee) pair.getKey();
+            if(currentPosisitonFeu.indexOf('N') >= 0)
+                imageNameIntersection += "N";
+            if(currentPosisitonFeu.indexOf('S') >= 0)
+                imageNameIntersection += "S";
+            if(currentPosisitonFeu.indexOf('E') >= 0)
+                imageNameIntersection += "E";
+            if(currentPosisitonFeu.indexOf('W') >= 0)
+                imageNameIntersection += "W";
+            imageNameIntersection += ".png";
+            
+            listRouteImage.get(c.getCoordonneeY()).set(c.getCoordonneeX(), imageNameIntersection);
+            System.out.println(imageNameIntersection);
+            System.out.println(c.toString());
+            
+        }
+        
         return listRouteImage;
     }
  
@@ -227,7 +274,7 @@ public class Simulateur {
                         pg = PositionGeographique.NORD;
                         break;
                     case "O":
-                        pg = PositionGeographique.OUEST;
+                        pg = PositionGeographique.WEST;
                         break;
                     case "S":
                         pg = PositionGeographique.SUD;

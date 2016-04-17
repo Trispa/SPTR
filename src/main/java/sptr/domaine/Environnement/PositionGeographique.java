@@ -11,5 +11,5 @@ package sptr.domaine.Environnement;
  */
 public enum PositionGeographique {
   
-    EST, OUEST, NORD, SUD
+    EST, WEST, NORD, SUD
 }

@@ -184,20 +184,20 @@ public class Parametres {
 
     @Override
     public String toString() {
-        return "Parametres{" + "simulation=" + simulation + 
-                "\n, positionDepartX=" + positionDepartX +
-                "\n, positionDepartY=" + positionDepartY + 
-                "\n, positionArriveX=" + positionArriveX + 
-                "\n, positionArriveY=" + positionArriveY + 
-                "\n, communication=" + communication + 
-                "\n, autoReparation=" + autoReparation + 
-                "\n, collision=" + collision + 
-                "\n, echelle=" + echelle + ", vitesse=" + vitesse + 
-                "\n, acceleration=" + acceleration +
-                "\n, consommation=" + consommation + ", feuJaune=" + feuJaune + 
-                "\n, temperatureMin=" + temperatureMin + 
-                "\n, temperatureMax=" + temperatureMax + 
-                "\n, strategie=" + strategie + "}\n";
+        return "<html>Parametres <br><br>" + "simulation = " + simulation + 
+                ",<br> positionDepartX = " + positionDepartX +
+                ",<br> positionDepartY = " + positionDepartY + 
+                ",<br> positionArriveX = " + positionArriveX + 
+                ",<br> positionArriveY = " + positionArriveY + 
+                ",<br> communication = " + communication + 
+                ",<br> autoReparation = " + autoReparation + 
+                ",<br> collision = " + collision + 
+                ",<br> echelle = " + echelle + ",<br> vitesse = " + vitesse + 
+                ",<br> acceleration = " + acceleration +
+                ",<br> consommation = " + consommation + ",<br> feuJaune = " + feuJaune + 
+                ",<br> temperatureMin = " + temperatureMin + 
+                ",<br> temperatureMax = " + temperatureMax + 
+                ",<br> strategie = " + strategie + "<br></html>";
     }
     
     

@@ -9,6 +9,7 @@ package sptr.presentation;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import sptr.controleur.Simulateur;
 
@@ -32,8 +33,10 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     {
         initComponents();
         this.simulateur = s;
+        this.simulateur = new Simulateur("sptr-scenario.xml");
         this.afficheur = a;
-        initEmptyMap();
+        initMapWithXMLFile();
+        showParameter.setText(this.simulateur.getParametres().toString());
         
     }
     
@@ -42,7 +45,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         for(int i = 0; i < 1024; i++)
         {
             JLabel tmpLabel = new JLabel();
-            tmpLabel.setIcon(new javax.swing.ImageIcon(this.getClass().getResource("/sptr/res/empty.png/"))); // NOI18N
+            tmpLabel.setIcon(new javax.swing.ImageIcon("/home/bhacaz/Dropbox/Ulaval/H-16/SPTR/SPTR/src/main/java/sptr/res/empty.png")); // NOI18N
             imageGrid.add(tmpLabel);
         }
     }
@@ -54,7 +57,8 @@ public class InterfaceSPTR extends javax.swing.JFrame {
             for(String imageName : als)
             {
                 JLabel tmpLabel = new JLabel();
-                tmpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sptr/res/" + imageName))); // NOI18N
+                tmpLabel.setPreferredSize(new java.awt.Dimension(64, 64));
+                tmpLabel.setIcon(new javax.swing.ImageIcon(this.getClass().getResource("/" + imageName))); // NOI18N
                 imageGrid.add(tmpLabel);
             }
         }
@@ -75,6 +79,8 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         chooseXMLFileButton = new javax.swing.JButton();
         imageGrid = new javax.swing.JPanel();
         carteRoutiereLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        showParameter = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuFichier = new javax.swing.JMenuItem();
@@ -86,7 +92,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelResultat.setText("Resultats");
-        getContentPane().add(jLabelResultat, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, -1, -1));
+        getContentPane().add(jLabelResultat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
 
         demarerSimulationButton.setText("Demarer simulation");
         demarerSimulationButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +100,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
                 demarerSimulationButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(demarerSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 170, -1));
+        getContentPane().add(demarerSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 170, -1));
 
         chooseXMLFileButton.setText("Fichier XML");
         chooseXMLFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,13 +108,20 @@ public class InterfaceSPTR extends javax.swing.JFrame {
                 chooseXMLFileButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(chooseXMLFileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, -1));
+        getContentPane().add(chooseXMLFileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 190, -1));
 
+        imageGrid.setPreferredSize(new java.awt.Dimension(200, 200));
         imageGrid.setLayout(new java.awt.GridLayout(32, 32));
-        getContentPane().add(imageGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 360, 350));
+        getContentPane().add(imageGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 830, 780));
 
         carteRoutiereLabel.setText("Carte routiere");
-        getContentPane().add(carteRoutiereLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        getContentPane().add(carteRoutiereLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        showParameter.setText("jLabel1");
+        showParameter.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jScrollPane1.setViewportView(showParameter);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 230, 290));
 
         jMenu1.setText("File");
 
@@ -163,9 +176,9 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuFichierActionPerformed
 
     private void jMenuParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametresActionPerformed
-        Parametres o = new Parametres();
+        JFrame o = new ParametresWindows(simulateur.getParametres());
 //        jDesktopPane1.add(o);
-        o.show();
+        o.setVisible(true);
     }//GEN-LAST:event_jMenuParametresActionPerformed
 
     private void jMenuQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuQuitterActionPerformed
@@ -254,6 +267,8 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuFichier;
     private javax.swing.JMenuItem jMenuParametres;
     private javax.swing.JMenuItem jMenuQuitter;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel showParameter;
     // End of variables declaration//GEN-END:variables
 }
 

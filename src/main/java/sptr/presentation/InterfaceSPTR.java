@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 import sptr.controleur.Simulateur;
 
 /**
@@ -37,6 +38,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         this.afficheur = a;
         initMapWithXMLFile();
         showParameter.setText(this.simulateur.getParametres().toString());
+
         
     }
     
@@ -74,7 +76,6 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelResultat = new javax.swing.JLabel();
         demarerSimulationButton = new javax.swing.JButton();
         chooseXMLFileButton = new javax.swing.JButton();
         imageGrid = new javax.swing.JPanel();
@@ -91,16 +92,13 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelResultat.setText("Resultats");
-        getContentPane().add(jLabelResultat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
-
         demarerSimulationButton.setText("Demarer simulation");
         demarerSimulationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 demarerSimulationButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(demarerSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 170, -1));
+        getContentPane().add(demarerSimulationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, 190, -1));
 
         chooseXMLFileButton.setText("Fichier XML");
         chooseXMLFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -108,11 +106,11 @@ public class InterfaceSPTR extends javax.swing.JFrame {
                 chooseXMLFileButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(chooseXMLFileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 190, -1));
+        getContentPane().add(chooseXMLFileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 190, -1));
 
         imageGrid.setPreferredSize(new java.awt.Dimension(200, 200));
         imageGrid.setLayout(new java.awt.GridLayout(32, 32));
-        getContentPane().add(imageGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 830, 780));
+        getContentPane().add(imageGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 800, 780));
 
         carteRoutiereLabel.setText("Carte routiere");
         getContentPane().add(carteRoutiereLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -121,7 +119,7 @@ public class InterfaceSPTR extends javax.swing.JFrame {
         showParameter.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jScrollPane1.setViewportView(showParameter);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 230, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 130, 230, 290));
 
         jMenu1.setText("File");
 
@@ -171,8 +169,12 @@ public class InterfaceSPTR extends javax.swing.JFrame {
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
         }
         
-        simulateur.setFilePath(filePath);
-        simulateur.readXML();
+        this.simulateur = new Simulateur(filePath);
+        imageGrid.removeAll();
+        initMapWithXMLFile();
+        imageGrid.revalidate();
+        imageGrid.repaint();
+        showParameter.setText(this.simulateur.getParametres().toString());
     }//GEN-LAST:event_jMenuFichierActionPerformed
 
     private void jMenuParametresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuParametresActionPerformed
@@ -211,9 +213,12 @@ public class InterfaceSPTR extends javax.swing.JFrame {
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
         }
         
-        simulateur.setFilePath(filePath);
-        simulateur.readXML();
+        this.simulateur = new Simulateur(filePath);
+        imageGrid.removeAll();
         initMapWithXMLFile();
+        imageGrid.revalidate();
+        imageGrid.repaint();
+        showParameter.setText(this.simulateur.getParametres().toString());
     }//GEN-LAST:event_chooseXMLFileButtonActionPerformed
 
     private void demarerSimulationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_demarerSimulationButtonActionPerformed
@@ -261,7 +266,6 @@ public class InterfaceSPTR extends javax.swing.JFrame {
     private javax.swing.JButton chooseXMLFileButton;
     private javax.swing.JButton demarerSimulationButton;
     private javax.swing.JPanel imageGrid;
-    private javax.swing.JLabel jLabelResultat;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuFichier;

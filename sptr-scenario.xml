@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SPTR scenario="scenario1" version="1.0">
 	<Parametres>
-		<Simulation>4800</Simulation>
+		<Simulation>5000</Simulation>
 		<Communication>1</Communication>
 		<AutoReparation>4</AutoReparation>
 		<Collision>60</Collision>
@@ -136,6 +136,27 @@
 			<YDebut>24</YDebut>
 			<XFin>10</XFin>
 			<YFin>24</YFin>
+			<Vitesse>4</Vitesse>
+		</Route>
+		<Route numero="18">
+			<XDebut>10</XDebut>
+			<YDebut>24</YDebut>
+			<XFin>10</XFin>
+			<YFin>31</YFin>
+			<Vitesse>4</Vitesse>
+		</Route>
+		<Route numero="19">
+			<XDebut>10</XDebut>
+			<YDebut>10</YDebut>
+			<XFin>10</XFin>
+			<YFin>2</YFin>
+			<Vitesse>4</Vitesse>
+		</Route>
+		<Route numero="20">
+			<XDebut>10</XDebut>
+			<YDebut>2</YDebut>
+			<XFin>15</XFin>
+			<YFin>2</YFin>
 			<Vitesse>4</Vitesse>
 		</Route>
 	</Routes>
